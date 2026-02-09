@@ -1,3 +1,3 @@
 # rock_paper_scissors
 
-La version console du jeu pierre papier ciseaux
+Ajout d'un UI au jeu du pierre papier ciseau
