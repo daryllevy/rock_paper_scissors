@@ -1,7 +1,17 @@
 let computerChoice;
 let userChoice;
+let humanScore = 0;
+let computerScore = 0;
 let result = document.querySelector(".result");
 let container = document.querySelector(".container");
+let player1 = document.querySelector(".player1-score");
+let player2 = document.querySelector(".player2-score");
+let scorePlayer1 = document.createElement("span");
+let scorePlayer2 = document.createElement("span");
+let winner = document.querySelector(".winner");
+let btnReplay = document.createElement("button");
+btnReplay.textContent = "Replay";
+const body = document.querySelector("body");
 
 /// Obtenir le choix de la machine
 function getComputerChoice() {
@@ -24,78 +34,81 @@ function playRound(userChoice, computerChoice) {
     result.textContent = `It's a tie! ${userChoice} = ${computerChoice}`;
   } else if (userChoice === "rock" && computerChoice === "paper") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou loose! Paper beats Rock`;
-
     computerScore += 1;
   } else if (userChoice === "rock" && computerChoice === "scissors") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou win! Rock beats Scissors`;
-
     humanScore += 1;
   } else if (userChoice === "paper" && computerChoice === "scissors") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou loose! Scissors beats Paper`;
-
     computerScore += 1;
   } else if (userChoice === "paper" && computerChoice === "rock") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou win! Paper beats Rock`;
-
     humanScore += 1;
   } else if (userChoice === "scissors" && computerChoice === "paper") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou win! Scissors beats Paper`;
     humanScore += 1;
   } else if (userChoice === "scissors" && computerChoice === "rock") {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou loose! Rock beats Scissors`;
-
     computerScore += 1;
   }
+  scorePlayer1.textContent = humanScore;
+  scorePlayer2.textContent = computerScore;
+  player1.appendChild(scorePlayer1);
+  player2.appendChild(scorePlayer2);
 }
 
-container.addEventListener("click", (e) => {
-  let target = e.target;
-  switch (target.textContent) {
-    case "ROCK":
-      userChoice = "ROCK";
-      break;
-    case "PAPER":
-      userChoice = "PAPER";
-      break;
-    case "SCISSORS":
-      userChoice = "SCISSORS";
-      break;
-  }
-  userChoice = userChoice.toLowerCase();
-
-  computerChoice = getComputerChoice();
-
-  playRound(userChoice, computerChoice);
+/// Suppression du bouton replay
+btnReplay.addEventListener("click", (e) => {
+  humanScore = 0;
+  computerScore = 0;
+  result.textContent = "";
+  winner.textContent = "";
+  scorePlayer1.textContent = "";
+  scorePlayer2.textContent = "";
+  btnReplay.remove();
 });
 
-/// Obtenir le choix du joueur
-
-// userChoice = userChoice.toLowerCase();
-// console.log(userChoice);
-
+/// Logique des parties
 function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+  container.addEventListener("click", (e) => {
+    if (humanScore >= 5 || computerScore >= 5) {
+      if (humanScore > computerScore) {
+        winner.textContent = "Congratulations!! You win the game";
+        return;
+      } else {
+        winner.textContent = "You lose";
+        return;
+      }
+    }
 
-  // if (humanScore === computerScore) {
-  //   console.log(
-  //     "Tie! Your score : " + humanScore + " Computer score : " + computerScore,
-  //   );
-  // } else if (humanScore < computerScore) {
-  //   console.log(
-  //     "You loose the game! Your score : " +
-  //       humanScore +
-  //       " Computer score : " +
-  //       computerScore,
-  //   );
-  // } else {
-  //   console.log(
-  //     "Congratulations!! You win the game! Your score : " +
-  //       humanScore +
-  //       " Computer score : " +
-  //       computerScore,
-  //   );
-  // }
+    let target = e.target;
+    switch (target.textContent) {
+      case "ROCK":
+        userChoice = "ROCK";
+        break;
+      case "PAPER":
+        userChoice = "PAPER";
+        break;
+      case "SCISSORS":
+        userChoice = "SCISSORS";
+        break;
+    }
+    userChoice = userChoice.toLowerCase();
+
+    computerChoice = getComputerChoice();
+
+    playRound(userChoice, computerChoice);
+
+    if (humanScore >= 5 || computerScore >= 5) {
+      if (humanScore > computerScore) {
+        winner.textContent = "Congratulations!! You win the won";
+        body.appendChild(btnReplay);
+      } else {
+        winner.textContent = "You lose";
+        body.appendChild(btnReplay);
+      }
+    }
+  });
 }
 
-// playGame();
+playGame();
