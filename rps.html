@@ -3,21 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
     <title>ROCK PAPER SCISSORS</title>
   </head>
   <body>
-    <div class="result"></div>
-    <div class="scores">
-      Score :
-      <div class="player1-score">Player 1 : </div>
-      <div class="player2-score">Player 2 : </div>
-    </div>
+    <h1>Rock, Paper, Scissors Game</h1>
     <div class="container">
-      <button id="rock">ROCK</button>
-      <button id="paper">PAPER</button>
-      <button id="scissors">SCISSORS</button>
+      <div class="result"></div>
+      <div class="scores">
+        Score :
+        <div class="player1-score">Player 1 :</div>
+        <div class="player2-score">Player 2 :</div>
+      </div>
+      <div class="choice">
+        <div id="rock">
+          <img src="./img/pierre.png" alt="image d'une pierre" width="90px" />
+        </div>
+        <div id="paper">
+          <img src="./img/papier.png" alt="image d'un papier" width="90px" />
+        </div>
+        <div id="scissors">
+          <img src="./img/ciseaux.png" alt="image de ciseaux" width="90px" />
+        </div>
+      </div>
+      <div class="winner"></div>
     </div>
-    <div class="winner"></div>
   </body>
 </html>
