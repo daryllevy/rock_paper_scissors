@@ -3,7 +3,7 @@ let userChoice;
 let humanScore = 0;
 let computerScore = 0;
 let result = document.querySelector(".result");
-let container = document.querySelector(".container");
+let choice = document.querySelector(".choice");
 let player1 = document.querySelector(".player1-score");
 let player2 = document.querySelector(".player2-score");
 let scorePlayer1 = document.createElement("span");
@@ -70,7 +70,7 @@ btnReplay.addEventListener("click", (e) => {
 
 /// Logique des parties
 function playGame() {
-  container.addEventListener("click", (e) => {
+  choice.addEventListener("click", (e) => {
     if (humanScore >= 5 || computerScore >= 5) {
       if (humanScore > computerScore) {
         winner.textContent = "Congratulations!! You win the game";
