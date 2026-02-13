@@ -28,6 +28,16 @@ h1 {
   font-size: 36px;
 }
 
+/* CLASSES UTILITAIRES */
+.green {
+  color: green;
+}
+
+.red {
+  color : red;
+}
+/* */
+
 .score {
   text-align: center;
   font-size: 22px;
