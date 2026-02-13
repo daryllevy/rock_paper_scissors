@@ -3,14 +3,18 @@ let userChoice;
 let humanScore = 0;
 let computerScore = 0;
 let result = document.querySelector(".result");
-let choice = document.querySelector(".choice");
-let player1 = document.querySelector(".player1-score");
-let player2 = document.querySelector(".player2-score");
-let scorePlayer1 = document.createElement("span");
-let scorePlayer2 = document.createElement("span");
+let choice = document.querySelector(".choice-user");
+let player = document.querySelector(".player1-score");
+let computer = document.querySelector(".player2-score");
+let scorePlayer = document.createElement("span");
+let scoreComputer = document.createElement("span");
 let winner = document.querySelector(".winner");
 let btnReplay = document.createElement("button");
 btnReplay.textContent = "Replay";
+btnReplay.setAttribute(
+  "style",
+  "background-color: green; color: #ffff; padding: 10px 18px; border-radius: 15px; font-size: 18px; font-weight: 700; margin-left: 600px; margin-bottom: 16px;",
+);
 const body = document.querySelector("body");
 
 /// Obtenir le choix de la machine
@@ -51,10 +55,10 @@ function playRound(userChoice, computerChoice) {
     result.textContent = `You choose ${userChoice} and the computer choose ${computerChoice}\nYou loose! Rock beats Scissors`;
     computerScore += 1;
   }
-  scorePlayer1.textContent = humanScore;
-  scorePlayer2.textContent = computerScore;
-  player1.appendChild(scorePlayer1);
-  player2.appendChild(scorePlayer2);
+  scorePlayer.textContent = " " + humanScore;
+  scoreComputer.textContent = " " + computerScore;
+  player.appendChild(scorePlayer);
+  computer.appendChild(scoreComputer);
 }
 
 /// Suppression du bouton replay
@@ -63,8 +67,8 @@ btnReplay.addEventListener("click", (e) => {
   computerScore = 0;
   result.textContent = "";
   winner.textContent = "";
-  scorePlayer1.textContent = "";
-  scorePlayer2.textContent = "";
+  scorePlayer.textContent = "";
+  scoreComputer.textContent = "";
   btnReplay.remove();
 });
 
@@ -76,7 +80,7 @@ function playGame() {
         winner.textContent = "Congratulations!! You win the game";
         return;
       } else {
-        winner.textContent = "Game Over! You lose";
+        winner.textContent = "Game Over! You lose the game";
         return;
       }
     }
@@ -100,11 +104,12 @@ function playGame() {
     playRound(userChoice, computerChoice);
 
     if (humanScore >= 5 || computerScore >= 5) {
+      result.textContent = "";
       if (humanScore > computerScore) {
-        winner.textContent = "Congratulations!! You win the won";
+        winner.textContent = "Congratulations!! You win the game";
         body.appendChild(btnReplay);
       } else {
-        winner.textContent = "You lose";
+        winner.textContent = "Game Over! You lose the game";
         body.appendChild(btnReplay);
       }
     }
