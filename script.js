@@ -76,20 +76,20 @@ function playGame() {
         winner.textContent = "Congratulations!! You win the game";
         return;
       } else {
-        winner.textContent = "You lose";
+        winner.textContent = "Game Over! You lose";
         return;
       }
     }
 
     let target = e.target;
-    switch (target.textContent) {
-      case "ROCK":
+    switch (target.id) {
+      case "rock":
         userChoice = "ROCK";
         break;
-      case "PAPER":
+      case "paper":
         userChoice = "PAPER";
         break;
-      case "SCISSORS":
+      case "scissors":
         userChoice = "SCISSORS";
         break;
     }
