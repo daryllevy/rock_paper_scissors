@@ -20,3 +20,37 @@ h1 {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.winner {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 36px;
+}
+
+.score {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 900;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+}
+
+.scores {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: 56px;
+}
+
+.choices {
+  display: flex;
+  justify-content: space-between;
+}
+
+.choice-user div img,
+.choice-computer div img {
+  margin-bottom: 18px;
+}
