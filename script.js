@@ -13,7 +13,7 @@ let btnReplay = document.createElement("button");
 btnReplay.textContent = "Replay";
 btnReplay.setAttribute(
   "style",
-  "background-color: green; color: #ffff; padding: 10px 18px; border-radius: 15px; font-size: 18px; font-weight: 700; margin-left: 600px; margin-bottom: 16px;",
+  "background-color: green; color: #ffff; padding: 10px 18px; border-radius: 15px; font-size: 18px; font-weight: 700; margin-left: 650px; margin-bottom: 16px;",
 );
 const body = document.querySelector("body");
 
@@ -67,6 +67,7 @@ btnReplay.addEventListener("click", (e) => {
   computerScore = 0;
   result.textContent = "";
   winner.textContent = "";
+  winner.classList.remove("green", "red");
   scorePlayer.textContent = "";
   scoreComputer.textContent = "";
   btnReplay.remove();
@@ -78,9 +79,11 @@ function playGame() {
     if (humanScore >= 5 || computerScore >= 5) {
       if (humanScore > computerScore) {
         winner.textContent = "Congratulations!! You win the game";
+        winner.classList.add("green");
         return;
       } else {
         winner.textContent = "Game Over! You lose the game";
+        winner.classList.add("red");
         return;
       }
     }
@@ -107,9 +110,11 @@ function playGame() {
       result.textContent = "";
       if (humanScore > computerScore) {
         winner.textContent = "Congratulations!! You win the game";
+        winner.classList.add("green");
         body.appendChild(btnReplay);
       } else {
         winner.textContent = "Game Over! You lose the game";
+        winner.classList.add("red");
         body.appendChild(btnReplay);
       }
     }
