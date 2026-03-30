@@ -1,3 +1,3 @@
 # rock_paper_scissors
 
-Ajout d'un UI au jeu du pierre papier ciseau
+<p><a href="https://daryllevy.github.io/rock_paper_scissors/">Démo ici👈</a></p>
